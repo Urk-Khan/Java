@@ -28,6 +28,7 @@ public class saveServlet extends HttpServlet {
                 s.degree=request.getParameter("textDegree");
                 s.desig=request.getParameter("textDesig");
                 int x = dao.insert(s);
+                
                 if (x>0)
                 {
                     response.sendRedirect("viewServlet");;

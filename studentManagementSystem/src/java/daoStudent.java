@@ -6,20 +6,16 @@ class student
 }
 public class daoStudent {
     Connection con=null;
-    void connection()
-    {
-        try
-        {
-            Class.forName("com.mysql.jdbc.drivers");
-            String url = "jdbc:mysql://localhost:3360/studentdb";
+    void connection(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/studentdb";
             con = DriverManager.getConnection(url, "root", "");
-        }catch(Exception ex)
-        {
-            System.out.println("Error in DAOstudent");
+        } catch (Exception ex) {
+            System.out.println("Student_Connection Error try again");
             System.out.println(ex);
-        }  
-    }
-    int insert(student s)
+        }
+    }    int insert(student s)
     {
         int ret = 0;
         try
