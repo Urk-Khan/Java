@@ -7,7 +7,7 @@
         
     </head>
     <body>
-        <form method="POST" action="validationServlet" >
+        <form method="POST" action="enteryServlet" >
             User Name <input type = "text" name="textUserName" required>
             Password <input type="text" name="textPass" required><br>
             <input type="submit" value="Login">

@@ -1,8 +1,8 @@
 import java.sql.*;
 class student
 {
-    int id, rollNo, cnic;
-    String name, degree, desig;
+    int id;
+    String name, rollNo, cnic, degree, department;
 }
 public class daoStudent {
     Connection con=null;
@@ -10,7 +10,7 @@ public class daoStudent {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/studentdb";
-            con = DriverManager.getConnection(url, "root", "");
+            con = DriverManager.getConnection(url, "root", "87654321");
         } catch (Exception ex) {
             System.out.println("Student_Connection Error try again");
             System.out.println(ex);
@@ -25,39 +25,38 @@ public class daoStudent {
             PreparedStatement pst = con.prepareStatement(qry);
             pst.setInt(1, s.id);
             pst.setString(2, s.name);
-            pst.setInt(3, s.rollNo);
-            pst.setInt(4, s.cnic);
+            pst.setString(4, s.cnic);
+            pst.setString(3, s.rollNo);
             pst.setString(5, s.degree);
-            pst.setString(6, s.desig);
+            pst.setString(6, s.department);
             ret=pst.executeUpdate();
         }catch(Exception ex)
         {
-            System.out.println("Error in dao insert");
             System.out.println(ex);
         }
         return ret;
     }
-    int update(student s)
-    {
-        int ret = 0;
-        try
-        {
-            connection();
-            String qry = "update tbldata set= name=?, rollNo=?, cnic=?, degree=?, desig=? where id = ?";
-            PreparedStatement pst = con.prepareStatement(qry);
-            pst.setInt(1, s.id);
-            pst.setString(2, s.name);
-            pst.setInt(3, s.rollNo);
-            pst.setInt(4, s.cnic);
-            pst.setString(5, s.degree);
-            pst.setString(6, s.desig);
-            ret = pst.executeUpdate();
-        }catch(Exception ex)
-        {
-            System.out.println("Error in doaUpdate");
-            System.out.println(ex);
-        }
-        return ret;
-    }
+//    int update(student s)
+//    {
+//        int ret = 0;
+//        try
+//        {
+//            connection();
+//            String qry = "update tbldata set= name=?, rollNo=?, cnic=?, degree=?, department=? where id = ?";
+//            PreparedStatement pst = con.prepareStatement(qry);
+//            pst.setInt(1, s.id);
+//            pst.setString(2, s.name);
+//            pst.setString(4, s.cnic);
+//            pst.setString(3, s.rollNo);
+//            pst.setString(5, s.degree);
+//            pst.setString(6, s.department);
+//            ret = pst.executeUpdate();
+//        }catch(Exception ex)
+//        {
+//            System.out.println("Error in doaUpdate");
+//            System.out.println(ex);
+//        }
+//        return ret;
+//    }
 }
 

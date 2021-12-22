@@ -30,10 +30,10 @@ public class enteryServlet extends HttpServlet {
                 out.println("<form method='POST' action=saveServlet>");
                 out.println("Id <input type ='text' name='textid' / required><br>");
                 out.println("Name <input type ='text' name='textName' / required><br>");
-                out.println("CNIC <input type ='text' name='textCnic' required><br>");
+                out.println("CNIC <input type ='text' name='textcnic' required><br>"); 
+                out.println("rollNo <input type ='text' name='textRollt' / required><br>");
                 out.println("Dagree <input type ='text' name='textDegree' required><br>");
                 out.println("Department <input type ='text' name='textDepartment' required><br>");
-                out.println("Contact No <input type ='text' name='textContact' required><br><br>");
                 out.println("<input type='submit' value='Insert'>");
                 out.println("<a href=\'http://localhost:8080/WebApplicationTask/viewServlet'>Back</a>");
                 out.println("<a href=\'http://localhost:8080/WebApplicationTask/logOutSrvlet'>Log out</a>");

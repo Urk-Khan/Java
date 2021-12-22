@@ -27,9 +27,9 @@ public class viewServlet extends HttpServlet {
                 out.println("</head><body><table>");
                 out.println("<th>ID</th><th>Name</th><th>RollNo</th><th>Degree</th><th>Department</th><th>CellNo</th><th>Action</th><th>Action</th>");
                 out.println("<tr>");
-                out.println("<td>"+s.id+"</td><td>"+s.name+"</td><td>"+s.rollNo+"</td><td>"+s.degree+"</td><td>"+s.desig+"</td>");
+                out.println("<td>"+s.id+"</td><td>"+s.name+"</td><td>"+s.cnic+"</td><td>"+s.rollNo+"</td><td>"+s.degree+"</td><td>"+s.department+"</td>");
                 out.println("<td><a href=\'http://localhost:8080/studentManagementSystem/editServlet'>Edit</a></td>");
-                out.println("<td><a href=http://localhost:8080/studentManagementSystem/deleteServlet>Delete</a></dt>");
+                out.println("<td><a href=\'http://localhost:8080/studentManagementSystem/deleteServlet'>Delete</a></dt>");
                 out.println("</tr>");
                 out.println("<tr>");
                 out.println("<td><a href=http://localhost:8080/studentManagementSystem/enteryServlet>Insert New Record</a></dt>");
