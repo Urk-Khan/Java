@@ -10,58 +10,43 @@ import javax.servlet.http.*;
 @WebServlet(urlPatterns = {"/saveServlet"})
 public class saveServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
+        
+                try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
             if (request.getSession().getAttribute("textUserName")!=null)
             {
+                Student s = new Student();
                 
-            
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
-                student s = new student();
-                daoStudent dao = new daoStudent();
-                s.id = Integer.parseInt(request.getParameter("textid"));
-                s.name=request.getParameter("textName");
-                s.cnic = request.getParameter("textcnic");
-                s.rollNo = request.getParameter("textRollt");
-                s.degree= request.getParameter("textDegree");
-                s.department= request.getParameter("textDepartment");
-                int x = dao.insert(s);
+                DAOStudent dao = new DAOStudent();
+                int id = Integer.parseInt(request.getParameter("textid"));
+                String name=request.getParameter("textName");
+                String cnic = request.getParameter("textcnic");
+                String rollNo = request.getParameter("textRollt");
+                String degree= request.getParameter("textDegree");
+                String department= request.getParameter("textDepartment");
+                int x=0;
+                x = dao.insert(s);
+                
                 
                 if (x>0)
                 {
-                    response.sendRedirect("viewServlet");;
+                    out.print("Data Inserted");
+                   // response.sendRedirect("viewServlet");
                 }
                 {
                     out.print("error in saveServlet");
                 }
-                }
+                
             }
             else
             {
                 response.sendRedirect("index.html");
             }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+       }
 }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.

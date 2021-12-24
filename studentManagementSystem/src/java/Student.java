@@ -1,21 +1,26 @@
+
+
+
 import java.sql.*;
-class student
-{
-    int id;
+
+
+public class Student {
+        int id;
     String name, rollNo, cnic, degree, department;
 }
-public class daoStudent {
+class DAOStudent {
     Connection con=null;
     void connection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/studentdb";
-            con = DriverManager.getConnection(url, "root", "87654321");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (Exception ex) {
             System.out.println("Student_Connection Error try again");
             System.out.println(ex);
         }
-    }    int insert(student s)
+    }
+    int insert(Student s)
     {
         int ret = 0;
         try
@@ -25,12 +30,14 @@ public class daoStudent {
             PreparedStatement pst = con.prepareStatement(qry);
             pst.setInt(1, s.id);
             pst.setString(2, s.name);
-            pst.setString(4, s.cnic);
-            pst.setString(3, s.rollNo);
+            pst.setString(3, s.cnic);
+            pst.setString(4, s.rollNo);
             pst.setString(5, s.degree);
             pst.setString(6, s.department);
             ret=pst.executeUpdate();
-        }catch(Exception ex)
+            System.out.println(ret);
+        }
+        catch(Exception ex)
         {
             System.out.println(ex);
         }
@@ -59,4 +66,3 @@ public class daoStudent {
 //        return ret;
 //    }
 }
-

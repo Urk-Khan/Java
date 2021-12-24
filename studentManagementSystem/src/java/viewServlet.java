@@ -19,8 +19,9 @@ public class viewServlet extends HttpServlet {
             }
             else
             {
-                student s = new student();
-                daoStudent dao = new daoStudent();
+               Student s = new Student();
+                
+                DAOStudent dao = new DAOStudent();
                 out.println("<!DOCTYPE html>");
                 out.println("<html><head><title>Servlet enteryServlet</title>");
                 out.println("");

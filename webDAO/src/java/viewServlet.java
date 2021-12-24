@@ -4,8 +4,8 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet(urlPatterns = {"/editServlet"})
-public class editServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/viewServlet"})
+public class viewServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -19,15 +19,22 @@ public class editServlet extends HttpServlet {
             }
             else
             {
-                Student s = new Student();
-                
+                student s =new student();
                 DAOStudent dao = new DAOStudent();
                 out.println("<!DOCTYPE html>");
                 out.println("<html><head><title>Servlet enteryServlet</title>");
                 out.println("");
-                out.println("</head><body>");
-                out.println("<h1>Edit</h1>");
-                out.println("</body></html>");
+                out.println("</head><body><table>");
+                out.println("<th>ID</th><th>Name</th><th>RollNo</th><th>Degree</th><th>Department</th><th>CellNo</th><th>Action</th><th>Action</th>");
+                out.println("<tr>");
+                out.println("<td>"+s.id+"</td><td>"+s.name+"</td><td>"+s.cnic+"</td><td>"+s.rollNo+"</td><td>"+s.degree+"</td><td>"+s.department+"</td>");
+                out.println("<td><a href=\'http://localhost:8080/webDAO/editServlet'>Edit</a></td>");
+                out.println("<td><a href=\'http://localhost:8080/webDAO/deleteServlet'>Delete</a></dt>");
+                out.println("</tr>");
+                out.println("<tr>");
+                out.println("<td><a href=http://localhost:8080/webDAO/enteryServlet>Insert New Record</a></dt>");
+                out.println("</tr>");
+                out.println("</table></body></html>");
             }
         }
     }
@@ -39,7 +46,6 @@ public class editServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
