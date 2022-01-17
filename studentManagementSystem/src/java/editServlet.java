@@ -19,9 +19,8 @@ public class editServlet extends HttpServlet {
             }
             else
             {
-                Student s = new Student();
-                
-                DAOStudent dao = new DAOStudent();
+                student s =new student();
+                DAOstudent dao = new DAOStudent();
                 out.println("<!DOCTYPE html>");
                 out.println("<html><head><title>Servlet enteryServlet</title>");
                 out.println("");

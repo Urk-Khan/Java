@@ -9,8 +9,9 @@
     <body>
         <form method="POST" action="validationServlet" >
             User Name <input type = "text" name="textUserName" required>
-            Password <input type="text" name="textPass" required><br>
-            <input type="submit" value="Login">
+            Password <input type="password" name="textPass" required><br>
+            <input type="submit" value="Login" >
         </form>
+        
     </body>
 </html>
